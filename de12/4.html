@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>デザイン演習第4回課題</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h1></font>第4回課題</h1>
+
+    
+    <div>
+    <font size="6">プログラミングでゲームを作る。</font><br>
+
+    私たちの班では、RPGゲームの作成をしました。<br>
+    <br>
+     ・内容<br>
+    宝の地図を拾った主人公のお話。<br>
+    数字を選択することで物語が先に進んでいく。<br>
+     <br>
+     <br>
+     ・ソースコード
+     <code>
+        <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+        <li style="background-color:#EFF;">print(<font style="color:brown;">"ある日、学校の帰り道に落ちていた宝の地図を拾ったあなた。"</font>)</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">selecta = int(input(<font style="color:brown;">"宝を探しに行きますか？"</font><font style="color:brown;">"1…はい.2…いいえ"</font>))</li>
+        <li style="background-color:#EEF;">if selecta == 1:</li>
+        <li style="background-color:#EFF;">&nbsp;print(<font style="color:brown;">"冒険スタート！"</font>)</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">elif selecta == 2:</li>
+        <li style="background-color:#EEF;">&nbsp;print(<font style="color:brown;">"地図を捨てて、そのまま家に帰った！"</font>)</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">name=input(<font style="color:brown;">"名前を入力してください。"</font>)</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">print(<font style="color:brown;">"地図の通りに進んでいると、宝の地図を狙う奴が戦いを挑んできた。"</font>)</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">selecta = int(input(<font style="color:brown;">"戦いますか？"</font><font style="color:brown;">"1…はい.2…いいえ"</font>))</li>
+        <li style="background-color:#EEF;">if selecta == 1:</li>
+        <li style="background-color:#EFF;">&nbsp;print(<font style="color:brown;">"無事勝利。戦った奴らを仲間にして進む。"</font>)</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">elif selecta == 2:</li>
+        <li style="background-color:#EEF;">&nbsp;print(<font style="color:brown;">"無視して進んでいたら、知らないうちに地図を奪われ冒険終了。"</font>)</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;">print(<font style="color:brown;">"進み続けると、分かれ道に出会った。"</font>)</li>
+        <li style="background-color:#EFF;">selectb = int(input(<font style="color:brown;">"どちらに進みますか？"</font><font style="color:brown;">"１…右.２…左"</font>))</li>
+        <li style="background-color:#EEF;">if selectb == 1: </li>
+        <li style="background-color:#EFF;">&nbsp;print(<font style="color:brown;">"呑気に歩いていたら巨大な穴に落ちた。冒険終了。"</font>)</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">elif selectb == 2:</li>
+        <li style="background-color:#EEF;">&nbsp;print(<font style="color:brown;">"いかにも宝が入っていそうな箱を見つける。"</font>)</li>
+        <li style="background-color:#EFF;"></li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">selectc = int(input(<font style="color:brown;">"開けますか？"</font><font style="color:brown;">"１…はい、２…いいえ"</font>))</li>
+        <li style="background-color:#EEF;">if selectc == 1:</li>
+        <li style="background-color:#EFF;">&nbsp;print(<font style="color:brown;">"中から毒蛇が出てきてかまれる。冒険終了。"</font>)</li>
+        <li style="background-color:#EEF;"></li>
+        <li style="background-color:#EFF;">elif selectb == 2:</li>
+        <li style="background-color:#EEF;">&nbsp;print(<font style="color:brown;">"さらに進んだ先で袋に入った大量の宝石を発見！仲間と山分けして家に帰る。冒険終了！"</font>)</li>
+        <li style="background-color:#EFF;"></li>
+        </ol></code>
+            <br>
+            <br>
+        ・expected an indented blockエラーの対処法<br>
+        赤い波線が引かれている部分のスペースが足りていないということなのでスペースを開けて対処する。<br>
+        (今回は波線部分の前にスペースを開けたらエラーでは無くなった。)<br>
+        
+    
+    
+</div>
+
+         
+
+
+
+    </div>
+
+</body>
+</html>
