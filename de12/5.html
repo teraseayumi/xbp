@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>デザイン演習第5回課題</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h1></font>第5回課題</h1>
+
+    
+    <div>
+    <font size="5">パソコンの壁紙を3分毎に変更するプログラム</font>
+        <br>
+        <br>
+
+    <ol>
+
+    <li>
+        ・すぐに壁紙に飽きてしまうので、時間ごとに変わるといいと思った。<br>
+    
+    </li>
+    <br>
+    <br>
+
+    <li>
+        ソースコード<br>
+
+        <code>
+            <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+            <li style="background-color:#EFF;">import ctypes</li>
+            <li style="background-color:#EEF;">import os</li>
+            <li style="background-color:#EFF;">import glob</li>
+            <li style="background-color:#EEF;">import time</li>
+            <li style="background-color:#EFF;">import threading</li>
+            <li style="background-color:#EEF;">import random</li>
+            <li style="background-color:#EFF;">import codecs</li>
+            <li style="background-color:#EEF;">import sys</li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">#import→外からデータを取り込む</li>
+            <li style="background-color:#EFF;">#ctypes→外部関数ライブラリ（他の人が作った機能を使えるようにしたもの？）を使うのを可能にする。</li>
+            <li style="background-color:#EEF;">#os→オペレーティングシステム、ソフトウェアとハードウェアを仲介してコンピュータを制御する。</li>
+            <li style="background-color:#EFF;">#glob→特定の条件にマッチするファイルを取得してプログラム内で使うのを可能にする。</li>
+            <li style="background-color:#EEF;">#threading→マルチスレッドプログラミング（アプリのタスクを複数のスレッドに分けて並行処理する方式）を可能にする。</li>
+            <li style="background-color:#EFF;">#codecs→データの符号化や圧縮・解凍</li>
+            <li style="background-color:#EEF;">#sys→sysという拡張子を使うのを可能にする？</li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">INTERVAL_SEC = 3</li>
+            <li style="background-color:#EFF;">#壁紙が変わるまでの秒数を指定</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">class BgSlider():#classによってデータを入れる領域と処理の仕方を書く領域を設ける。</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self):</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.index = 0</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.directory = None</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;def setup(self):</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global off</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with codecs.open(r<font style="color:brown;">'C:\Users\あゆみ\mygit\xbp\de12\images'</font>, <font style="color:brown;">'r'</font>, <font style="color:brown;">'utf-8'</font>) as f:</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lines = f.readlines()</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.directory = lines[0].strip()</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#好きな画像をファイルとして取り込む</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ここがうまくいかない！</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;def worker(self):</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path = self.directory + r<font style="color:brown;">'\*.jpg'</font></li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path.replace(<font style="color:brown;">'\\\\', '</font>\\')</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files = glob.glob(path)</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# [print(file) for file in files] # ファイルリストをコンソールにまとめて出力するときに使う</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# file = files[random.randint(0, len(files) - 1)] # ランダムにしたい場合はここを使う</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files = sorted(files) # 順番に表示したい場合はここを使う</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file = files[self.index] # 順番に表示したい場合はここを使う</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(file)</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctypes.windll.user32.SystemParametersInfoW(20, 0, file, 0)</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if self.index == len(files) - 1:</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.index = 0</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.index += 1</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(INTERVAL_SEC)</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;def schedule(self, interval, f, wait=True):</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base_time = time.time()</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next_time = 0</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while True:#while→指定した条件が真の間、処理を繰り返し実行</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try:</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = threading.Thread(target=f)</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t.start()</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if wait:</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t.join()</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next_time = ((base_time - time.time()) % interval) or interval</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(next_time)</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except KeyboardInterrupt:</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit()</li>
+            <li style="background-color:#EEF;"></li>
+            <li style="background-color:#EFF;"></li>
+            <li style="background-color:#EEF;">if __name__ == "__main__":</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;try:</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bg = BgSlider()</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bg.setup()</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bg.schedule(INTERVAL_SEC, bg.worker, False)</li>
+            <li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;finally:</li>
+            <li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctypes.windll.user32.SystemParametersInfoW(20, 0, None, 0)</li>
+            </ol></code>
+    <br>
+    <br>
+    ・写真のファイルの設定がうまくいかず、写真の表示ができなかった。
+    </li>
+    <br>
+    <br>
+
+    
+
+    <li>
+    
+        参考にしたサイト<br>
+        <br>
+    <a href="https://qiita.com/HyunwookPark/items/bbfce14eb5b3ff1d7c29">Windowsの壁紙スライダーをpythonで作ってみた</a><br>
+    </li>
+
+
+
+
+
+
+
+    
+    
+    
+</div>
+
+         
+
+
+
+    </div>
+
+</body>
+</html>
